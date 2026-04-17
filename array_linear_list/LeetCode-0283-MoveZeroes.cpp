@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 /*
 * LeetCode 283 移动零
 *
@@ -10,10 +14,6 @@
 * 时间复杂度：O(n)
 * 空间复杂度：O(1)
 */
-
-#include <iostream>
-#include <vector>
-using namespace std;
 
 class Solution {
 public:

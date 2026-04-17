@@ -1,13 +1,13 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 /*
 LeetCode 1. 两数之和
 思路：暴力枚举，双重循环遍历所有数对
 时间复杂度：O(n²)
 空间复杂度：O(1)
 */
-
-#include <iostream>
-#include <vector>
-using namespace std;
 
 class Solution
 {

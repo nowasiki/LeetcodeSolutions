@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 /*
 LeetCode 26. 删除有序数组中的重复项
 思路：双指针（快慢指针）
@@ -6,10 +10,6 @@ i：快指针，遍历数组
 时间复杂度：O(n)
 空间复杂度：O(1) 原地算法
 */
-
-#include <iostream>
-#include <vector>
-using namespace std;
 
 class Solution
 {

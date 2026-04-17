@@ -1,13 +1,13 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 /*
 LeetCode 27. 移除元素
 思路：双指针，保留不等于 val 的元素，覆盖到数组前面
 时间复杂度：O(n)
 空间复杂度：O(1) 原地算法
 */
-
-#include <iostream>
-#include <vector>
-using namespace std;
 
 class Solution
 {

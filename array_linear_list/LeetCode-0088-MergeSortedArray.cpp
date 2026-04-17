@@ -4,7 +4,7 @@ using namespace std;
 
 /*
 * LeetCode 88 合并两个有序数组
-* 解法1：辅助数组 + 正向双指针
+* 解法1：辅助数组 + 正向双指针（暴力解法）
 * 思路：
 * 1. 创建一个大小为 m+n 的辅助数组
 * 2. 双指针分别从 nums1、nums2 头部开始，从小到大合并到辅助数组
@@ -13,60 +13,17 @@ using namespace std;
 * 时间复杂度：O(m + n)
 * 空间复杂度：O(m + n)
 */
-//class Solution
-//{
-//public:
-//	void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
-//	{
-//		int ptr1 = 0, ptr2 = 0;
-//		int ptr = 0;
-//		vector<int> nums(m + n);
-//		while (ptr1 != m && ptr2 != n)
-//		{
-//			if (nums1[ptr1] <= nums2[ptr2])
-//			{
-//				nums[ptr] = nums1[ptr1];
-//				ptr1++;
-//				ptr++;
-//			}
-//			else
-//			{
-//				nums[ptr] = nums2[ptr2];
-//				ptr2++;
-//				ptr++;
-//			}
-//		}
-//		if (ptr1 == m)
-//		{
-//			for (; ptr2 < n; ptr2++)
-//			{
-//				nums[ptr] = nums2[ptr2];
-//				ptr++;
-//			}
-//		}
-//		else
-//		{
-//			for (; ptr1 < m; ptr1++)
-//			{
-//				nums[ptr] = nums1[ptr1];
-//				ptr++;
-//			}
-//		}
-//		for (int i = 0; i < m + n; i++)
-//		{
-//			nums1[i] = nums[i];
-//		}
-//	}
-//};
+
 
 /*
 * LeetCode 88 合并两个有序数组
-* 解法2：从后往前双指针（最优解）
+*
+* 解法：从后往前双指针（最优解）
 * 思路：
-* 1. 题目要求合并到 nums1 且原地修改，从尾部填充避免元素覆盖
-* 2. 三个指针：ptr1(nums1有效元素尾)、ptr2(nums2尾)、ptr(合并位置)
-* 3. 比较两指针元素，将较大的放入当前位置，指针前移
-* 4. 若 nums2 仍有剩余，直接复制到 nums1 头部
+* 1. 利用 nums1 尾部空间，从后往前填充，避免覆盖有效元素
+* 2. 三个指针分别指向 nums1 有效尾部、nums2 尾部、合并后位置
+* 3. 每次将较大值放入当前位置，指针前移
+* 4. 最后将 nums2 剩余元素直接复制
 *
 * 时间复杂度：O(m + n)
 * 空间复杂度：O(1)
