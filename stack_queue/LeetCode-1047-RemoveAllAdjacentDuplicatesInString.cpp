@@ -1,49 +1,33 @@
 #include <iostream>
 #include <string>
-#include <stack>
-using  namespace std;
+using namespace std;
 
 /*
 * LeetCode 1047 删除字符串中的所有相邻重复项
-* 方法：栈 标准解法
-* 思路：
-* 1. 遍历字符串
-* 2. 当前字符与栈顶相同 → 弹栈（消除重复）
-* 3. 否则 → 入栈
-* 4. 最后将栈中元素倒序拼接成结果字符串
+* 最优解法：string 模拟栈
+* 不用 stack，直接用字符串本身实现栈操作
 */
 class Solution
 {
 public:
-	stack<char> S;
 	string removeDuplicates(string s)
 	{
-		int size = s.size();
-		for (int i = 0; i < size; i++)
+		string stk; // 用字符串模拟栈
+		for (char c : s)
 		{
-			// 栈空 或 字符不同，入栈
-			if (S.size() == 0 || s[i] != S.top())
-				S.push(s[i]);
-			// 与栈顶相同，弹栈（消除重复）
+			// 如果栈空 或 当前字符 != 栈顶 → 入栈
+			if (stk.empty() || c != stk.back())
+				stk.push_back(c);
+			// 否则 → 重复，弹栈消除
 			else
-				S.pop();
+				stk.pop_back();
 		}
-		
-		// 把栈里的内容拼成字符串
-		size = S.size();
-		string str = "";
-		for (int i = 0; i < size; i++)
-		{
-			str = S.top() + str;
-			S.pop();
-		}
-		return str;
+		return stk; // 直接返回，不用拼接！
 	}
 };
 
 int main()
 {
 	string str = "abbaca";
-	string ret = Solution().removeDuplicates(str);
-	cout << ret;
+	cout << Solution().removeDuplicates(str);
 }
